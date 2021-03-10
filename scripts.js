@@ -109,3 +109,46 @@ async function fetchQuote() {
 let displayQuote = data => {
     console.log('DISPLAY QUOTE', data);
 }
+/*
+
+    - set elements
+    - apply properties
+    - put them somewhere
+*/
+let logoContainer = document.getElementById('genQuote');
+//console.log(logoContainer.firstElementChild);
+
+logoContainer.firstElementChild !=null ?
+logoContainer.removeChild(logo) :
+null;
+
+//! Set Elements:
+
+    let quoteBy = document.createElement('p');
+    quoteBy.className = 'quoteBy';
+    quoteBy.innerText = '~ Ron Swanson';
+    quoteBy.style = 'font-size: 3rem; font-family: billionDreams;
+    color: #3a2718;';
+
+    let quote= document.createElement('h1');
+    quote.className = 'quote';
+    quote.innerText = `${data[0]}`;
+    quote.style = 'font-family: pinewood; color: #3a2718;';
+
+    let img = document.createElement('img');
+    img.src = './assets.ron.png';
+    img.aly = 'Ron Swanson';
+    img.style = 'height: 100px; width: auto;';
+
+    //! Appending
+    quoteContainer.appendChild(quote);
+    quoteContainer.appendChild(quoteBy);
+    quoteContainer.appendChild(img);
+
+    img.addEventListener('click', () => {
+        quoteContainer.removeChild(quote);
+        quoteContainer.removeChild(quoteBy);
+        quoteContainer.removeChild(img);
+        fetchQuote();
+    })
+}
